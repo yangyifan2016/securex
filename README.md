@@ -1,3 +1,3 @@
-# vue3-admin
+# 蜂箱数据合规管理平台
 
-Vue3 + Vite + Vue-Router + Element-Plus + Echarts + Axios 后台管理系统。
+Vue3 + Vite + Vue-Router + Element-Plus + Echarts + Axios 
