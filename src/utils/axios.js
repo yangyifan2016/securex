@@ -11,7 +11,7 @@ axios.defaults.baseURL = config[import.meta.env.MODE].baseUrl
 axios.defaults.withCredentials = true
 // 请求头，headers 信息
 axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
-axios.defaults.headers['token'] = localGet('token') || ''
+// axios.defaults.headers['token'] = localGet('token') || ''
 // 默认 post 请求，使用 application/json 形式
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 
@@ -23,9 +23,9 @@ axios.interceptors.response.use(res => {
   }
   if (res.data.resultCode != 200) {
     if (res.data.message) ElMessage.error(res.data.message)
-    if (res.data.resultCode == 419) {
-      router.push({ path: '/login' })
-    }
+    // if (res.data.resultCode == 419) {
+    //   router.push({ path: '/login' })
+    // }
     return Promise.reject(res.data)
   }
 

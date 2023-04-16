@@ -44,7 +44,7 @@ const state = reactive({
   onMounted(() => {
   const pathname = window.location.hash.split('/')[1] || ''
   if (!['login'].includes(pathname)) {
-    getUserInfo()
+    // getUserInfo()
   }
 })
 // 获取用户信息

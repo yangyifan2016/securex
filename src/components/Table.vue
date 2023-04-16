@@ -1,6 +1,6 @@
 <template>
   <el-table
-      :load="state.loading"
+      :load=" state.loading"
       :data="state.tableData"
       tooltip-effect="dark"
       style="width: 100%"

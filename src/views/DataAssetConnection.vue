@@ -6,7 +6,7 @@
           <el-button type="primary" @click="handleAddDatabase()">添加数据资产</el-button>
           <el-button type="primary" @click="">数据批量导入</el-button>
         </div>
-        <el-table :load="state.loading" ref="multipleTable" :data="state.tableData" tooltip-effect="dark" empty-text="暂无数据"
+        <el-table ref="multipleTable" :data="state.tableData" tooltip-effect="dark" empty-text="暂无数据" v-loading="state.loading"
           style="width: 100%" @selection-change="handleSelectionChange">
           <!-- <el-table-column type="selection" width="55">
           </el-table-column> -->
@@ -56,44 +56,34 @@
 <script setup>
 import { onMounted, reactive, ref, toRefs } from 'vue'
 import { ElMessage } from 'element-plus'
-import { Plus, Delete } from '@element-plus/icons-vue'
 import DialogAddDatabase from '@/components/DialogAddDatabase.vue'
 import { useRoute, useRouter } from 'vue-router'
 import axios from '@/utils/axios'
-// 首页配置类型参数
-const configTypeMap = {
-  hot: 3,
-  new: 4,
-  recommend: 5
-}
 const addDatabase = ref(null)
 const router = useRouter()
 const route = useRoute()
 const multipleTable = ref(null)
 const addGood = ref(null)
 const state = reactive({
-  tabName: 'database',
   loading: false,
+  tabName: 'database',
   tableData: [], // 数据列表
   multipleSelection: [], // 选中项
   total: 0, // 总条数
   currentPage: 1, // 当前页
   pageSize: 10, // 分页大小
   type: 'add', // 操作类型
-  configType: 3 // 3-(首页)热销商品 4-(首页)新品上线 5-(首页)为你推荐
 })
 // 监听路由变化
 router.beforeEach((to) => {
   if (['hot', 'new', 'recommend'].includes(to.name)) {
     state.configType = configTypeMap[to.name]
     state.currentPage = 1
-    // getIndexConfig()
   }
 })
 // 初始化
 onMounted(() => {
-  state.configType = configTypeMap[route.name]
-  // getIndexConfig()
+  // getListData()
 })
 const tabClick = () => {
 
@@ -101,19 +91,20 @@ const tabClick = () => {
 const handleAddDatabase = () => {
   addDatabase.value.open()
 }
-// 首页热销商品列表
-const getIndexConfig = () => {
+// 获取数据资产列表
+const getListData = () => {
   state.loading = true
-  axios.get('/indexConfigs', {
+  axios.get('/table/getTablesInfo', {
     params: {
-      pageNumber: state.currentPage,
-      pageSize: state.pageSize,
-      configType: state.configType
+      // pageNumber: state.currentPage,
+      // pageSize: state.pageSize,
+      databaseName: 'securex'
     }
   }).then(res => {
-    state.tableData = res.list
-    state.total = res.totalCount
-    state.currentPage = res.currPage
+    // state.tableData = res.list
+    // state.total = res.totalCount
+    // state.currentPage = res.currPage
+    console.log(res)
     state.loading = false
   })
 }
