@@ -123,12 +123,12 @@ const handleDeleteOne = (id) => {
     ids: [id]
   }).then(() => {
     ElMessage.success('删除成功')
-    getIndexConfig()
+    // getIndexConfig()
   })
 }
 const changePage = (val) => {
   state.currentPage = val
-  getIndexConfig()
+  // getIndexConfig()
 }
 </script>
 

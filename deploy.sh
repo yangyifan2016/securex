@@ -3,7 +3,7 @@
 #安装依赖
 npm install
 #打包
-npm run build
+npm run build:release
 #删除 nginx 指向的文件夹下的文件
 rm -rf /home/www/*
 
