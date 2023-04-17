@@ -83,7 +83,7 @@ router.beforeEach((to) => {
 })
 // 初始化
 onMounted(() => {
-  // getListData()
+  getListData()
 })
 const tabClick = () => {
 
@@ -104,11 +104,10 @@ const getListData = () => {
     // state.tableData = res.list
     // state.total = res.totalCount
     // state.currentPage = res.currPage
-    console.log(res)
     state.loading = false
   })
 }
-// 修改商品
+// 修改
 const handleEdit = (id) => {
   state.type = 'edit'
   addGood.value.open(id)
@@ -117,7 +116,7 @@ const handleEdit = (id) => {
 const handleSelectionChange = (val) => {
   state.multipleSelection = val
 }
-// 单个删除
+// 删除
 const handleDeleteOne = (id) => {
   axios.delete('/indexConfigs', {
     ids: [id]
