@@ -1,6 +1,6 @@
 export default {
   development: {
-    baseUrl: 'http://49.232.11.30:9884' // 测试接口域名
+    baseUrl: '/api' // 测试接口域名
   },
   beta: {
     baseUrl: 'http://49.232.11.30:9884' // 测试接口域名

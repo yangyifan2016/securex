@@ -50,7 +50,7 @@
     </el-tabs>
     
   </el-card>
-  <DialogAddDatabase ref='addDatabase' :reload="getIndexConfig" />
+  <DialogAddDatabase ref='addDatabase' />
 </template>
 
 <script setup>
@@ -101,6 +101,7 @@ const getListData = () => {
       databaseName: 'securex'
     }
   }).then(res => {
+    state.tableData = res.data
     // state.tableData = res.list
     // state.total = res.totalCount
     // state.currentPage = res.currPage
